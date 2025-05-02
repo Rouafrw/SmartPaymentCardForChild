@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء عملية بيع</title>
+    <link rel="stylesheet" href="transaction.css">
+</head>
+<body>
+    <h2>تفاصيل العملية</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>رقم البطاقة</th>
+                <th>التاريخ</th>
+                <th>السعر الإجمالي</th>
+            </tr>
+        </thead>
+        <tbody id="transaction-list">
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">المجموع</td>
+                <td id="total-price">0 SYR</td>
+            </tr>
+        </tfoot>
+    </table>
+    <script src="transaction.js"></script>
+</body>
+</html>
