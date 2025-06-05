@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color:  #3c764a;
+
+    color: white;
+}
+
+header {
+    background-color:  #3c764a;
+    /* padding: 15px; */
+    font-size: 24px;
+
+}
+
+main {
+    margin: 20px auto;
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f5e3a7;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    color: black;
+}
+
+h1{
+    color: #f5e3aa;
+}
+input, select {
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #f0efe9;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    color: #3c764a;
+
+}
+
+
+#message {
+    margin-top: 15px;
+    font-size: 18px;
+    color: rgb(236, 243, 236);
+}
+select {
+    background-color: #f3fbf5; /* تغيير خلفية القائمة بالكامل إلى زيتي */
+    color: rgb(17, 17, 17);
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    appearance: none;
+}
+
+select:focus {
+    background-color: #eef1ec; /* تحديد اللون الزيتي عند الضغط */
+    outline: none; 
+}
+
+option {
+    background-color: #f0f3ed; /* تغيير خلفية الخيارات إلى زيتي */
+    color: rgb(15, 14, 14);
+}
