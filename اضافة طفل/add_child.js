@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
             row.innerHTML = `
                 <td>${child.id}</td>
                 <td>${child.name}</td>
-                <td>${child.fathername}</td>
                 <td>${child.parentname}</td>
                 <td>${child.educationLevel}</td>
                 <td><button class="edit" data-index="${index}">✏️تعديل</button></td>
@@ -39,15 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 const child = children[index];
 
                 const newName = prompt("👦 الاسم:", child.name);
-                const newFather = prompt("👨 اسم الأب:", child.fathername);
+                // const newFather = prompt("👨 اسم الأب:", child.fathername);
                 const newMother = prompt("👩🏻 اسم الأم:", child.parentname);
                 const newLevel = prompt("🎓 المستوى التعليمي:", child.educationLevel);
 
-                if (newName && newFather && newMother && newLevel) {
+                if (newName && newMother && newLevel) {
                     children[index] = {
                         ...child,
                         name: newName,
-                        fathername: newFather,
+                        // fathername: newFather,
                         parentname: newMother,
                         educationLevel: newLevel
                     };
@@ -62,13 +61,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("add-child").addEventListener("click", function () {
         const name = prompt("👦 اسم الطالب:");
-        const fathername = prompt("👨 اسم الأب:");
+        // const fathername = prompt("👨 اسم الأب:");
         const parentname = prompt("👩🏻 اسم الأم:");
         const educationLevel = prompt("🎓 المستوى التعليمي:");
 
-        if (name && fathername && parentname && educationLevel) {
+        if (name  && parentname && educationLevel) {
             const id = getNextId();
-            children.push({ id, name, fathername, parentname, educationLevel });
+            children.push({ id, name,  parentname, educationLevel });
             localStorage.setItem("children", JSON.stringify(children));
             renderChildren();
         } else {

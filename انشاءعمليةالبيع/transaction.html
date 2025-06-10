@@ -3,28 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إنشاء عملية بيع</title>
+    <title>إدارة المنتجات والفاتورة</title>
     <link rel="stylesheet" href="transaction.css">
 </head>
 <body>
-    <h2>تفاصيل العملية</h2>
+
+    <h2>قائمة المشتريات</h2>
+<p id="total-amount">
+    💰 إجمالي الفاتورة: <span id="current-total">0</span> SYR | الحد الأقصى: <span id="max-limit">10000</span> SYR
+</p>
+<button id="numoftrnc">📝 رقم العملية: <span id="transaction-number">غير محدد</span></button>
+
+    
     <table>
-        <thead>
-            <tr>
-                <th>رقم البطاقة</th>
-                <th>التاريخ</th>
-                <th>السعر الإجمالي</th>
-            </tr>
-        </thead>
-        <tbody id="transaction-list">
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="2">المجموع</td>
-                <td id="total-price">0 SYR</td>
-            </tr>
-        </tfoot>
+  <thead>
+    <tr>
+        <th>📦 اسم المنتج</th>
+        <th>💰 السعر</th>
+        <th>✅ حالة المنتج</th>
+        <th>✏️ التعديل</th>
+        <th>🗑️ الحذف</th>
+    </tr>
+</thead>
+
+        <tbody id="product-list"></tbody>
     </table>
+    <button id="add-product">إضافة منتج جديد</button>
+
     <script src="transaction.js"></script>
 </body>
 </html>
+
+

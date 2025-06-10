@@ -53,16 +53,3 @@ td button {
     border: none;
     cursor: pointer;
 }
-
-.delete {
-    background: #dc3545;
-    color: white;
-}
-
-.edit {
-    background: #edd691;
-    color: black;
-}
-h1{
-    text-align: center;
-}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>شحن بطاقة الطالب</title>
+  <link rel="stylesheet" href="card_manger.css" />
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>🏫 شحن بطاقة الطالب </h1>
+  </header>
+
+  <div class="form-container">
+    <input type="text" id="student-name" placeholder="👤 اسم الطالب" />
+    <input type="text" id="student-balance" placeholder="💰 الرصيد" />
+    <button id="charge-button">🔋 شحن بطاقة</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>👤 الاسم</th>
+        <!-- <th>👨 الأب</th> -->
+        <th>👩 الأم</th>
+        <th>🎓 المستوى</th>
+        <th>🔢 المعرف</th>
+        <th>💳 رقم البطاقة</th>
+        <th>📦 باركود</th>
+        <th>💰 الرصيد</th>
+        <th>✏️ تعديل</th>
+        <th>🗑️ حذف</th>
+        <th>🖨️ طباعة</th>
+      </tr>
+    </thead>
+    <tbody id="card-list"></tbody>
+  </table>
+
+  <script src="card_manger.js"></script>
+</body>
+</html>

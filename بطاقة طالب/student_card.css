@@ -1,0 +1,50 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #ffe9be;
+  text-align: center;
+  direction: rtl;
+}
+
+.card-container {
+  width: 350px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9f7;
+  border-radius: 15px;
+  position: relative;
+}
+
+.school-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.info {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.info p {
+  margin: 4px 0;
+}
+
+.controls {
+  margin-top: 30px;
+}
+
+input {
+  padding: 8px;
+  width: 200px;
+  border-radius: 8px;
+  border: 1px solid #edda77;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+}

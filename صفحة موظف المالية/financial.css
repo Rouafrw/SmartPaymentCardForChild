@@ -4,19 +4,16 @@ body {
     color: white;
     text-align: center;
 }
-
 header {
     background-color:  #3c764a;
     font-size: 24px;
 }
-
 nav {
     margin: 20px 0;
 }
 h1{
     color: #F3E2A9;
 }
-
 button {
     background-color: #F3E2A9;
     border: none;
@@ -27,7 +24,6 @@ button {
     transition: 0.3s;
     border-radius: 10px;
 }
-
 button:hover {
     background-color: #f9e295;
 }

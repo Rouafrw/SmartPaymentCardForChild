@@ -2,7 +2,7 @@
     font-family: Arial, sans-serif;
        background-color: #ffe9be;
 
-    color: rgb(0, 0, 0);
+    color: white;
 
     text-align: center;
 }
@@ -57,12 +57,4 @@ td button {
 .delete {
     background: #dc3545;
     color: white;
-}
-
-.edit {
-    background: #edd691;
-    color: black;
-}
-h1{
-    text-align: center;
 }

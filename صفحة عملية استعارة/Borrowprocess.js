@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
       row.innerHTML = `
         <td>${entry.student.name}</td>
         <td>${entry.student.id}</td>
-        <td>${entry.student.fathername}</td>
         <td>${entry.student.parentname}</td>
         <td>${entry.student.educationLevel}</td>
         <td>${entry.book.name}</td>

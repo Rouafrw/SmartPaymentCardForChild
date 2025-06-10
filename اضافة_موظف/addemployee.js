@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     const employeeList = document.getElementById("employee-list");
     let employees = JSON.parse(localStorage.getItem("employees")) || [];
+ const filterBtn = document.getElementById("filter-btn");
+    const resetBtn = document.getElementById("reset-btn");
 
-    function renderEmployees() {
+    function renderEmployees(list = employees) {
         employeeList.innerHTML = "";
-        employees.forEach((employee, index) => {
+        list.forEach((employee, index) => {
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td>${employee.name}</td>
@@ -45,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // إضافة موظف جديد
     document.getElementById("add-employee").addEventListener("click", () => {
         const name = prompt("🛠️ أدخل اسم الموظف:");
         const type = prompt("💼 أدخل الوظيفة (مالية، بيع، مكتبة):");
@@ -74,4 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     renderEmployees();
+        filterBtn.addEventListener("click", () => {
+        const role = prompt("💼 أدخل نوع الوظيفة (مالية / بيع / مكتبة):");
+        if (role) {
+            const filtered = employees.filter(emp => emp.type === role.trim());
+            renderEmployees(filtered);
+        }
+    });
+
+    resetBtn.addEventListener("click", () => {
+        renderEmployees();
+    });
 });
