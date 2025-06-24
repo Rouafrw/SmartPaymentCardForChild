@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <title>عرض الكتب</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="addbook.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 قائمة الكتب</h1>
+  </header>
+
+  <div class="controls">
+    <button id="add-book">➕ إضافة كتاب جديد</button>
+    <button id="filter-type">🏷️ فرز حسب النوع</button>
+    <button id="reset-books">🔁 عرض جميع الكتب</button>
+  </div>
+
+  <main>
+    <table>
+      <thead>
+        <tr>
+                      <th>🔢 المعرف</th>
+          <th>📒 اسم الكتاب</th>
+          <th>💰 السعر</th>
+          <th>🏆 النقاط</th>
+          <th>🏷 النوع</th>
+          <th>✏️ تعديل</th>
+          <th>🗑️ حذف</th>
+        </tr>
+      </thead>
+      <tbody id="book-list"></tbody>
+    </table>
+  </main>
+
+  <script src="addbook.js"></script>
+</body>
+</html>
