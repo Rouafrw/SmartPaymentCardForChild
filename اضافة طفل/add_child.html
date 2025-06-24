@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>عرض الطلاب</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add_child.css">
+</head>
+<body>
+    <header>
+        <h1> قائمة الطلاب👦</h1>
+    </header>
+
+    <div class="controls">
+        <button id="add-child">➕ إضافة طالب جديد</button>
+        <button id="filter-education">🎓 فرز حسب المستوى التعليمي</button>
+        <button id="reset-list">🔁 عرض الجميع</button>
+    </div>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>🔢 المعرف</th>
+                    <th>👦 اسم الطالب</th>
+                    <th>👨🏻 اسم الأب</th>
+                    <th>👩🏻 اسم الأم</th>
+                    <th>🎓 المستوى التعليمي</th>
+                    <th>✏️ تعديل</th>
+                    <th>🗑️ حذف</th>
+                </tr>
+            </thead>
+            <tbody id="child-list"></tbody>
+        </table>
+    </main>
+
+    <script src="add_child.js"></script>
+</body>
+</html>

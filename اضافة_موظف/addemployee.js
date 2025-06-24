@@ -1,25 +1,77 @@
-document.getElementById("employeeForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+    const employeeList = document.getElementById("employee-list");
+    let employees = JSON.parse(localStorage.getItem("employees")) || [];
 
-    let name = document.getElementById("name").value;
-    let id = document.getElementById("id").value;
-    let type = document.getElementById("type").value;
-    let salary = document.getElementById("salary").value;
+    function renderEmployees() {
+        employeeList.innerHTML = "";
+        employees.forEach((employee, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${employee.name}</td>
+                <td>${employee.id}</td>
+                <td>${employee.type}</td>
+                <td>${employee.salary} ل.س</td>
+                <td><button class="edit" data-index="${index}">✏️ تعديل</button></td>
+                <td><button class="delete" data-index="${index}">🗑️ حذف</button></td>
+            `;
+            employeeList.appendChild(row);
+        });
 
-    if (name && id && salary) {
-        document.getElementById("message").innerText =" ✅تم إضافة الموظف !";
-        
-        // إعادة تعيين النموذج بالشكل الصحيح
-        document.getElementById("employeeForm").reset();
-    } else {
-        document.getElementById("message").innerText = "❌ يرجى ملء جميع الحقول!";
+        document.querySelectorAll(".delete").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const index = btn.getAttribute("data-index");
+                employees.splice(index, 1);
+                localStorage.setItem("employees", JSON.stringify(employees));
+                renderEmployees();
+            });
+        });
+
+        document.querySelectorAll(".edit").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const index = btn.getAttribute("data-index");
+                const current = employees[index];
+                const newName = prompt("✏️ أدخل الاسم الجديد:", current.name);
+                const newSalary = prompt("💰 أدخل الراتب الجديد:", current.salary);
+
+                if (newName && newSalary && !isNaN(newSalary)) {
+                    current.name = newName;
+                    current.salary = Number(newSalary);
+                    localStorage.setItem("employees", JSON.stringify(employees));
+                    renderEmployees();
+                } else {
+                    alert("⚠️ تأكد من إدخال بيانات صحيحة!");
+                }
+            });
+        });
     }
-})
-document.addEventListener("DOMContentLoaded", function () {
-    let selectElement = document.getElementById("type"); // تأكد من أن لديك القائمة في HTML
-    
-    selectElement.addEventListener("change", function () {
-        this.style.backgroundColor = "#f0f3ed"; // تغيير اللون عند تحديد خيار
-        this.style.color = "black"; // جعل النص أبيض لضمان الوضوح
+
+    // إضافة موظف جديد
+    document.getElementById("add-employee").addEventListener("click", () => {
+        const name = prompt("🛠️ أدخل اسم الموظف:");
+        const type = prompt("💼 أدخل الوظيفة (مالية، بيع، مكتبة):");
+        const autoId = generateUniqueId();
+        let salary = 0;
+
+        if (type === "مالية") salary = 250000;
+        else if (type === "بيع") salary = 200000;
+        else if (type === "مكتبة") salary = 180000;
+        else return alert("⚠️ نوع الوظيفة غير معروف!");
+
+        if (name) {
+            employees.push({ name, id: autoId, type, salary });
+            localStorage.setItem("employees", JSON.stringify(employees));
+            renderEmployees();
+        } else {
+            alert("⚠️ يرجى إدخال الاسم");
+        }
     });
+
+    function generateUniqueId() {
+        let last = Number(localStorage.getItem("lastEmployeeID")) || 0;
+        last++;
+        localStorage.setItem("lastEmployeeID", last);
+        return last;
+    }
+
+    renderEmployees();
 });

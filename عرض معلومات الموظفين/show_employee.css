@@ -2,30 +2,36 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ffe9be;
     text-align: center;
+    direction: rtl;
     margin: 0;
     padding: 0;
-    direction: rtl;
 }
 
 header {
     background-color: #ffe9be;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 h1 {
     margin: 0;
+    font-size: 26px;
     color: #333;
 }
 
+.controls {
+    margin: 20px 0;
+}
+
 button {
-    margin-top: 15px;
+    margin: 0 8px;
     background-color: #28a745;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 18px;
     border: none;
-    border-radius: 15px;
+    border-radius: 12px;
+    font-size: 15px;
     cursor: pointer;
-    font-size: 16px;
+    transition: 0.3s;
 }
 
 button:hover {
@@ -34,39 +40,21 @@ button:hover {
 
 table {
     width: 90%;
-    margin: 30px auto;
+    margin: 20px auto;
     border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 th, td {
-    padding: 15px;
+    padding: 14px;
     border: 1px solid #000;
-    color: black;
-    
+    text-align: center;
+    vertical-align: middle;
+    font-size: 15px;
 }
 
 th {
     background-color: #ffe9be;
-}
-
-td {
-    background-color: #fff;
-}
-
-td button {
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.edit {
-    background-color: #edd691;
-    color: black;
-}
-
-.delete {
-    background-color: #dc3545;
-    color: white;
+    color: #000;
 }
