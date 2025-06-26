@@ -1,0 +1,49 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f5dc;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #2f612f;
+}
+
+.form input, .form select, .form button {
+  margin: 6px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+button {
+  background-color: #2f8f2f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #246c24;
+}
+
+table {
+  margin: 20px auto;
+  border-collapse: collapse;
+  width: 80%;
+  background: white;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 10px;
+}
+
+#invoice-area {
+  margin-top: 30px;
+  padding: 20px;
+  border: 2px dashed #444;
+  width: 400px;
+  background-color: white;
+  margin-inline: auto;
+}

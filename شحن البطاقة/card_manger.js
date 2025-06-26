@@ -1,8 +1,15 @@
 let children = JSON.parse(localStorage.getItem("children")) || [];
 let cards = JSON.parse(localStorage.getItem("cards")) || [];
 
-function generateCardNumber() {
-  return Math.floor(1000000000 + Math.random() * 9000000000).toString();
+function generateValidEAN13() {
+  const base = Math.floor(100000000000 + Math.random() * 900000000000).toString();
+  let sum = 0;
+  for (let i = 0; i < 12; i++) {
+    const digit = parseInt(base[i]);
+    sum += i % 2 === 0 ? digit : digit * 3;
+  }
+  const checkDigit = (10 - (sum % 10)) % 10;
+  return base + checkDigit;
 }
 
 function renderCards() {
@@ -25,8 +32,9 @@ function renderCards() {
       <td><button onclick="printStudentCard(${index})">🖨️طباعة</button></td>
     `;
     list.appendChild(row);
+
     JsBarcode(`#${barcodeId}`, card.cardNumber, {
-      format: "CODE128",
+      format: "EAN13",
       width: 2,
       height: 50,
       displayValue: false
@@ -45,33 +53,25 @@ document.getElementById("charge-button").addEventListener("click", () => {
 
   let student = children.find(s => s.name.trim() === name);
   if (!student) {
-    // const father = prompt("👨 اسم الأب:");
+    if (!confirm("👤 الطالب غير موجود، هل ترغبين بإضافته؟")) return;
+
     const mother = prompt("👩 اسم الأم:");
-    const level = prompt("🎓 المستوى التعليمي:");
+    const level = prompt("🎓 المستوى:");
     const newId = children.length > 0 ? Math.max(...children.map(c => Number(c.id))) + 1 : 1;
 
-    if (!father || !mother || !level) {
-      alert("⚠️ يجب إدخال جميع الحقول!");
+    if (!mother || !level) {
+      alert("⚠️ يجب إدخال كل الحقول!");
       return;
     }
 
-    student = {
-      id: newId,
-      name,
-    //   fathername: father,
-      parentname: mother,
-      educationLevel: level
-    };
-
+    student = { id: newId, name, parentname: mother, educationLevel: level };
     children.push(student);
     localStorage.setItem("children", JSON.stringify(children));
-    alert("✅ تم إضافة الطالب إلى السجل.");
   }
 
-  const cardNumber = generateCardNumber();
+  const cardNumber = generateValidEAN13();
   const newCard = {
     name: student.name,
-    // fathername: student.fathername,
     parentname: student.parentname,
     level: student.educationLevel,
     id: student.id,
@@ -81,8 +81,8 @@ document.getElementById("charge-button").addEventListener("click", () => {
 
   cards.push(newCard);
   localStorage.setItem("cards", JSON.stringify(cards));
+
   renderCards();
-  alert("✅ تم شحن البطاقة!");
   document.getElementById("student-name").value = "";
   document.getElementById("student-balance").value = "";
 });
@@ -105,9 +105,14 @@ function deleteCard(index) {
 }
 
 function printStudentCard(index) {
-  const selected = cards[index];
-  const name = encodeURIComponent(selected.name);
-  window.open(`../بطاقة طالب/student_card.html?name=${name}`, "_blank");
+  const card = cards[index];
+  const url = new URL("../بطاقة طالب/student_card.html", window.location.href);
+  url.searchParams.set("name", card.name);
+  url.searchParams.set("parentname", card.parentname);
+  url.searchParams.set("level", card.level);
+  url.searchParams.set("id", card.id);
+  url.searchParams.set("cardNumber", card.cardNumber);
+  window.open(url.toString(), "_blank");
 }
 
 renderCards();

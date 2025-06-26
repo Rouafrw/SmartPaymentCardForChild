@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>🧾 بيع عن طريق بطاقة</title>
+  <link rel="stylesheet" href="addproductbtn.css" />
+</head>
+<body>
+  <h1> عملية بيع باستخدام بطاقة الطالب💳</h1>
+
+  <div class="form">
+    <input type="text" id="card-number" placeholder="🔍 مرّر بطاقة الطالب" />
+    <input type="text" id="student-name" disabled placeholder="👤 اسم الطالب" />
+    <input type="text" id="student-balance" disabled placeholder="💰 الرصيد الحالي" />
+    <input type="text" id="max-limit" disabled placeholder="🚫 الحد الأعلى للشراء" />
+
+    <select id="payment-type">
+      <option value="رصيد">💰 رصيد</option>
+      <option value="نقاط">🏆 نقاط</option>
+    </select>
+
+    <button id="add-product">➕ إضافة منتج</button>
+    <button id="generate-invoice">🧾 إنشاء الفاتورة</button>
+  </div>
+
+  <div id="product-popup" style="display:none; margin-top: 20px;">
+    <select id="product-select"></select>
+    <input type="number" id="product-qty" placeholder="🔢 الكمية" min="1" />
+    <button id="confirm-product">✅ إضافة</button>
+  </div>
+
+  <table id="product-table">
+    <thead>
+      <tr>
+        <th>📌 المنتج</th>
+        <th>🔢 الكمية</th>
+        <th>⬇️ تقليل</th>
+        <th>🗑️ حذف</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div id="invoice-area"></div>
+  <script src="addproductbtn.js"></script>
+</body>
+</html>

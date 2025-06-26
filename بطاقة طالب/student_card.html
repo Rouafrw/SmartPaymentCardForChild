@@ -5,7 +5,21 @@
   <title>بطاقة الطالب</title>
   <link rel="stylesheet" href="student_card.css" />
   <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; text-align: center; padding: 30px; }
+    .card-container {
+      border: 2px dashed #000;
+      padding: 20px;
+      width: 350px;
+      margin: auto;
+      background: #fff;
+    }
+    .school-logo { width: 80px; margin-bottom: 10px; }
+    .barcode { margin-top: 20px; }
+    @media print {
+      body { background: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -14,15 +28,53 @@
     <h2>بطاقة الطالب 🎓</h2>
     <div class="info">
       <p><strong>الاسم:</strong> <span id="name"></span></p>
-      <!-- <p><strong>اسم الأب:</strong> <span id="father"></span></p> -->
       <p><strong>اسم الأم:</strong> <span id="mother"></span></p>
       <p><strong>المستوى التعليمي:</strong> <span id="level"></span></p>
       <p><strong>المعرف:</strong> <span id="id"></span></p>
       <p><strong>رقم البطاقة:</strong> <span id="cardNumber"></span></p>
     </div>
-    <svg id="barcode"></svg>
+    <svg id="barcode" class="barcode"></svg>
   </div>
 
-  <script src="student_card.js"></script>
+  <script>
+    const students = JSON.parse(localStorage.getItem("children")) || [];
+    const cards = JSON.parse(localStorage.getItem("cards")) || [];
+
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const name = params.get("name");
+      if (!name) {
+        alert("❌ لم يتم تحديد طالب.");
+        return;
+      }
+
+      const card = cards.find(c => c.name.trim() === name.trim());
+      const student = students.find(s => s.name.trim() === name.trim());
+
+      if (!card || !student) {
+        alert("🚫 الطالب غير موجود.");
+        return;
+      }
+
+      document.getElementById("name").textContent = student.name;
+      document.getElementById("mother").textContent = student.parentname;
+      document.getElementById("level").textContent = student.educationLevel;
+      document.getElementById("id").textContent = student.id;
+      document.getElementById("cardNumber").textContent = card.cardNumber;
+
+      // ✅ توليد الباركود بصيغة EAN-13
+      JsBarcode("#barcode", card.cardNumber, {
+        format: "EAN13",
+        width: 2,
+        height: 60,
+        displayValue: false
+      });
+
+      // ✅ طباعة بعد تأخير بسيط لتوليد الباركود
+      setTimeout(() => {
+        window.print();
+      }, 600);
+    };
+  </script>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>📦 إدارة القرطاسية</title>
+  <link rel="stylesheet" href="stationery.css" />
+</head>
+<body>
+  <header><h1> منتجات القرطاسية📦</h1></header>
+
+  <div class="controls">
+    <button id="add-item">➕ إضافة منتج</button>
+    <button id="sort-price">⬆️ فرز حسب السعر</button>
+    <button id="sort-points">🏆 فرز حسب النقاط</button>
+    <button id="reset-list">🔁 عرض الكل</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>🔢 المعرف</th>
+        <th>📌 الاسم</th>
+        <th>💰 السعر</th>
+        <th>🏆 النقاط</th>
+        <th>✏️ تعديل</th>
+        <th>🗑️ حذف</th>
+      </tr>
+    </thead>
+    <tbody id="stationery-list"></tbody>
+  </table>
+
+  <script src="stationery.js"></script>
+</body>
+</html>
